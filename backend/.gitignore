@@ -1,0 +1,8 @@
+/project-root
+  /frontend
+    node_modules/
+    .env
+  /backend
+    node_modules/
+    .env
+  .gitignore
