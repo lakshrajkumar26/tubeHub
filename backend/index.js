@@ -5,6 +5,7 @@ const cors = require("cors")
 const PORT = 3000;
 const db = require("./db/dbconn");
 const cookieParsar = require("cookie-parser");
+const userRoutes = require("./routes/user.routes");
 
 
 app.use(cors({
@@ -14,8 +15,10 @@ app.use(cors({
 
 app.use(express.json());   //{limit:"16kb"}
 app.use(express.urlencoded({extended:true, limit:"16kb"}))
-app.use(cookieParsar);
+app.use(cookieParsar());
 
+
+app.use("/api/user",userRoutes);
 
 app.get("/home",(req,res)=>{
     res.send("server is running,hi sajal");
