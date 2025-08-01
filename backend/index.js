@@ -4,8 +4,20 @@ const dotenv = require("dotenv").config();
 const cors = require("cors")
 const PORT = 3000;
 const db = require("./db/dbconn");
-const cookieParsar = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const userRoutes = require("./routes/user.routes");
+
+// const fs = require("fs");
+// const path = require("path");
+//for multer 
+
+
+// const tempDir = path.join(__dirname, "public", "temp");
+// if (!fs.existsSync(tempDir)) {
+//   fs.mkdirSync(tempDir, { recursive: true });
+// }
+
+
 
 
 app.use(cors({
@@ -15,7 +27,10 @@ app.use(cors({
 
 app.use(express.json());   //{limit:"16kb"}
 app.use(express.urlencoded({extended:true, limit:"16kb"}))
-app.use(cookieParsar());
+app.use(cookieParser());
+
+
+
 
 
 app.use("/api/user",userRoutes);

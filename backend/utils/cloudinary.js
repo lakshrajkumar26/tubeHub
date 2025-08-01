@@ -12,14 +12,16 @@ const uploadOnCloudinary = async (localFilePath) => {
         if (!localFilePath) return null
 
         const response = await v2.uploader.upload(localFilePath);
-        console.log("file uploaded on cloudinary", response.url);
 
+        // console.log("file uploaded on cloudinary", response.url);
+         fs.unlinkSync(localFilePath)   //-->aagr successfulyy to bhi remove
         return response;
     }catch(err){
-        fs.unlinkSync(localFilePath); // delete is unlink
+        console.log(err);
+        fs.unlinkSync(localFilePath); // //-->aagr err aaya  to bhi remove
         return null;
     }
     
 
 }
-module.export = uploadOnCloudinary;
+module.exports = uploadOnCloudinary;

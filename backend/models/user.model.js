@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
         lowercase: true,
         trim: true,
     },
-    fullname: {
+    fullName: {
         type: String,
         required: true,
         trim: true,
@@ -33,10 +33,10 @@ const UserSchema = new mongoose.Schema({
     coverImage: {
         type: String
     },
-    watchHistory: {
+    watchHistory: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Video"
-    },
+    }],
     refreshToken: {
         type: String
     }
@@ -45,3 +45,4 @@ const UserSchema = new mongoose.Schema({
 
 //--> used .pre  hook for bcrypt at 28 User and video model with hooks and JWT
 const user = mongoose.model("user",UserSchema)
+module.exports = user;
